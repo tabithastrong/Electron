@@ -53,7 +53,14 @@ public class LevelSelector : MonoBehaviour
 
             if(levelName == "Quit") {
                 Application.Quit();
+            } else if(levelName == "Reset Levels") {
+                PlayerPrefs.DeleteAll();
+                FindObjectOfType<FadePanel>().ResetLevel();
             } else {
+                if(levelName == "Level 1") {
+                    levelName = "IntroCutscene";
+                }
+
                 FindObjectOfType<FadePanel>().ChangeLevel(levelName);
                 source.clip = selectedLevelSound;
                 source.Play();
