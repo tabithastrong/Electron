@@ -8,8 +8,16 @@ public class ControllableObject : MonoBehaviour
 
     public Animator animator;
 
+    public Color color = Color.white;
+
     public void Start() {
         animator = GetComponent<Animator>();
+
+        foreach(ITrigger t in controls) {
+           if(t.GetComponent<SpriteRenderer>()) {
+                t.GetComponent<SpriteRenderer>().color = color;
+           }
+        }
     }
 
     public void Update() {

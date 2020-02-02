@@ -7,14 +7,21 @@ public class FinishAreaTrigger : MonoBehaviour
     public Transform[] inToComplete;
 
     BoxCollider2D collider2D;
+
+    AudioSource source;
+    bool complete = false;
     
     void Start() {
         Destroy(GetComponent<SpriteRenderer>());
         collider2D = GetComponent<BoxCollider2D>();
+
+        source = GetComponent<AudioSource>();
     }
 
     void Update() {
-        if(IsLevelComplete()) {
+        if(IsLevelComplete() && !complete) {
+            source.Play();
+            complete = true;
             FindObjectOfType<LevelCompleteScreenUI>().LevelComplete();
         }
     }

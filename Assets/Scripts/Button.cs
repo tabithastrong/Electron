@@ -10,11 +10,15 @@ public class Button : ITrigger
     public Sprite onSprite;
 
     public bool state;
+    bool oldState = false;
 
     int collidersOnButton = 0;
 
+    AudioSource source;
+
     void Start() {
         this.spriteRenderer = GetComponent<SpriteRenderer>();
+        source = GetComponent<AudioSource>();
     }
     void OnTriggerEnter2D(Collider2D collider) {
         collidersOnButton++;
@@ -32,6 +36,12 @@ public class Button : ITrigger
             spriteRenderer.sprite = offSprite;
             state = false;
         }
+
+        if(oldState != state) {
+            source.Play();
+        }
+
+        oldState = state;
     }
     public override bool GetState() {
         return state;

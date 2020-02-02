@@ -23,8 +23,10 @@ public class Pickup : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         PlayerController player;
         if(player = collider.gameObject.GetComponent<PlayerController>()) {
-            player.Pickup(type);
-            Destroy(gameObject);
+            if(!player.HasPickup(type)) {
+                player.Pickup(type);
+                Destroy(gameObject);
+            }
         }
     }
 }

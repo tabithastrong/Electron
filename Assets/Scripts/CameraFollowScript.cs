@@ -23,8 +23,8 @@ public class CameraFollowScript : MonoBehaviour
     }
 
     Vector3 GetCenter() {
-        float playerOneInput = Mathf.Abs(Input.GetAxis("Horizontal") + Input.GetAxis("Jump") + Input.GetAxis("Superjump"));
-        float playerTwoInput = Mathf.Abs(Input.GetAxis("HorizontalPlayerTwo") + Input.GetAxis("JumpPlayerTwo") + Input.GetAxis("SuperjumpPlayerTwo"));
+        float playerOneInput = Mathf.Abs(Input.GetAxis("Horizontal") + Input.GetAxis("Jump"));
+        float playerTwoInput = Mathf.Abs(Input.GetAxis("HorizontalPlayerTwo") + Input.GetAxis("JumpPlayerTwo"));
 
         if(playerToTrack == 0) {
             if(playerOneInput > playerTwoInput) {

@@ -42,7 +42,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: q
+    positiveButton: w
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -58,7 +58,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: i
+    positiveButton: up
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -118,7 +118,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Superjump
+    m_Name: Interact
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -134,7 +134,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SuperjumpPlayerTwo
+    m_Name: InteractPlayerTwo
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -171,6 +171,38 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: p
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Reset
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: f
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: ResetPlayerTwo
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: l
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000

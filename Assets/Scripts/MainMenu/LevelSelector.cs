@@ -13,10 +13,16 @@ public class LevelSelector : MonoBehaviour
     public GameObject levelParent;
     public Text levelSelectText;
 
+    public AudioClip changeLevelSound;
+    public AudioClip selectedLevelSound;
+
+    AudioSource source;
+
     int levelCount;
 
     public void Start() {
         levelCount = levelParent.transform.childCount;
+        source = GetComponent<AudioSource>();
     }
 
     public void Update() {
@@ -26,6 +32,8 @@ public class LevelSelector : MonoBehaviour
             hDown = true;
 
             levelSelected = ((levelSelected + (Input.GetAxis("Horizontal") > 0f ? 1 : -1)) + levelCount) % levelCount;
+            source.clip = changeLevelSound;
+            source.Play();
         } else if(Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f && hDown) {
             hDown = false;
         }
@@ -34,17 +42,21 @@ public class LevelSelector : MonoBehaviour
             hTwoDown = true;
 
             levelSelected = ((levelSelected + (Input.GetAxis("HorizontalPlayerTwo") > 0f ? 1 : -1)) + levelCount) % levelCount;
+            source.clip = changeLevelSound;
+            source.Play();
         } else if(Mathf.Abs(Input.GetAxis("HorizontalPlayerTwo")) < 0.1f && hTwoDown) {
             hTwoDown = false;
         }
 
-        if(Input.GetButtonDown("Jump") || Input.GetButtonDown("JumpPlayerTwo")) {
+        if(Input.GetButtonDown("Jump") || Input.GetButtonDown("JumpPlayerTwo") || Input.GetButtonDown("Interact") || Input.GetButtonDown("InteractPlayerTwo")) {
             string levelName = levelParent.transform.GetChild(levelSelected).name;
 
             if(levelName == "Quit") {
                 Application.Quit();
             } else {
                 FindObjectOfType<FadePanel>().ChangeLevel(levelName);
+                source.clip = selectedLevelSound;
+                source.Play();
             }
         }
 
