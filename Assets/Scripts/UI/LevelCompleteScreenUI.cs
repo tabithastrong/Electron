@@ -9,12 +9,13 @@ public class LevelCompleteScreenUI : MonoBehaviour
 
     float timeSinceFinished = 0f;
     bool levelFinished = false;
+    bool runAnimation = true;
 
     void Start() {
         animator = GetComponent<Animator>();
     }
     void Update() {
-        if(levelFinished) {
+        if(levelFinished && runAnimation) {
             timeSinceFinished += Time.deltaTime;
         }
 
@@ -23,11 +24,14 @@ public class LevelCompleteScreenUI : MonoBehaviour
         }
     }
 
-    public void LevelComplete() {
+    public void LevelComplete(bool runAnimation = true) {
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
         PlayerPrefs.Save();
-
-        animator.SetBool("LevelComplete", true);
+        
+        if(runAnimation) {
+            animator.SetBool("LevelComplete", true);
+        }
         levelFinished = true;
+        this.runAnimation = runAnimation;
     }
 }

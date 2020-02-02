@@ -24,7 +24,7 @@ public class DropoffPoint : MonoBehaviour
         PlayerController player;
 
         if(player = collider.gameObject.GetComponent<PlayerController>()) {
-            if(player.HasPickup(dropoffType)) {
+            if(!complete && player.HasPickup(dropoffType)) {
                 player.RemovePickup(dropoffType);
                 complete = true;
                 revealWhenComplete.SetActive(true);

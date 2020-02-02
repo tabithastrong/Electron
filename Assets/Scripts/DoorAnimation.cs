@@ -21,6 +21,8 @@ public class DoorAnimation : MonoBehaviour
 
     bool lastState = false;
 
+    public bool inverted = false;
+
 
     void Start() {
         co = GetComponent<ControllableObject>();
@@ -45,7 +47,10 @@ public class DoorAnimation : MonoBehaviour
     }
 
     void Update() {
-        if(co.State) {
+
+        bool state = inverted ? !co.State : co.State;
+
+        if(state) {
             if(rotationMode) {
                 transform.rotation = Quaternion.Lerp(transform.rotation, newRot, Time.deltaTime * transitionSpeed);
             } else {
@@ -59,10 +64,10 @@ public class DoorAnimation : MonoBehaviour
             }
         }
 
-        if(lastState != co.State) {
+        if(lastState != state) {
             source.Play();
         }
 
-        lastState = co.State;
+        lastState = state;
     }
 }

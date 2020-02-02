@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class FinishAreaTrigger : MonoBehaviour
 {
     public Transform[] inToComplete;
 
     BoxCollider2D collider2D;
+    
+    public float flashingSpeed = 10f;
+
+    Light2D light;
 
     AudioSource source;
     bool complete = false;
@@ -16,13 +22,24 @@ public class FinishAreaTrigger : MonoBehaviour
         collider2D = GetComponent<BoxCollider2D>();
 
         source = GetComponent<AudioSource>();
+        light = GetComponentInChildren<Light2D>();
     }
 
     void Update() {
         if(IsLevelComplete() && !complete) {
             source.Play();
             complete = true;
-            FindObjectOfType<LevelCompleteScreenUI>().LevelComplete();
+
+            if(SceneManager.GetActiveScene().name == "Level 6") {
+                FindObjectOfType<LevelCompleteScreenUI>().LevelComplete(false);
+                FindObjectOfType<FadePanel>().ChangeLevel("OutroCutscene");
+            } else {
+                FindObjectOfType<LevelCompleteScreenUI>().LevelComplete();
+            }
+        }
+
+        if(complete) {
+            light.intensity = 1f + (Mathf.Sin(Time.time * flashingSpeed) * 0.4f);
         }
     }
 

@@ -55,6 +55,8 @@ public class LevelSelector : MonoBehaviour
                 Application.Quit();
             } else if(levelName == "Reset Levels") {
                 PlayerPrefs.DeleteAll();
+                source.clip = selectedLevelSound;
+                source.Play();
                 FindObjectOfType<FadePanel>().ResetLevel();
             } else {
                 if(levelName == "Level 1") {
