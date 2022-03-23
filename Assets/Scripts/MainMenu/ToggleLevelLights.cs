@@ -17,7 +17,7 @@ public class ToggleLevelLights : MonoBehaviour
 
                     //the one before it has 
                     if((PlayerPrefs.HasKey("Level " + (levelID - 1)) && PlayerPrefs.GetInt("Level " + (levelID - 1)) == 1) || levelID == 1) {
-                        go.GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>().enabled = false;
+                        go.GetComponent<UnityEngine.Rendering.Universal.Light2D>().enabled = false;
                     } else {
                         //else delete
                         Destroy(go);

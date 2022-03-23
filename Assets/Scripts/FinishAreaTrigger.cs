@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class FinishAreaTrigger : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class FinishAreaTrigger : MonoBehaviour
     
     public float flashingSpeed = 10f;
 
-    Light2D light;
+    UnityEngine.Rendering.Universal.Light2D light;
 
     AudioSource source;
     bool complete = false;
@@ -22,7 +22,7 @@ public class FinishAreaTrigger : MonoBehaviour
         collider2D = GetComponent<BoxCollider2D>();
 
         source = GetComponent<AudioSource>();
-        light = GetComponentInChildren<Light2D>();
+        light = GetComponentInChildren<UnityEngine.Rendering.Universal.Light2D>();
     }
 
     void Update() {
